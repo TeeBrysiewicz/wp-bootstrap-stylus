@@ -22,14 +22,16 @@ gulp.task('styles', function(){
 		}))
 	.pipe(gulp.dest('./'))
 	.pipe(reload({ stream : true }))
-	// ---------------------------------------
+		// ---------------------------------------
 	// Uncomment next 3 lines for minified css
 	// ---------------------------------------
-	// .pipe(rename({ suffix: '.min' }))
-	// .pipe(minifyCss())
-	// .pipe(gulp.dest('./'))
+	.pipe(rename({ suffix: '.min' }))
+	.pipe(minifyCss())
+	.pipe(gulp.dest('./'))
 });
+
 gulp.task('default', ['styles']);
+
 // Browser Sync
 gulp.task('browser-sync', function(){
 	browserSync({

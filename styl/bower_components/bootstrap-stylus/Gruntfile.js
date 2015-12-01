@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
   watch: {
     css: {
-      files: 'bootstrap/**/*.styl',
+      files: '*.styl',
       tasks: ['stylus'],
       options: {
         debounceDelay: 250
