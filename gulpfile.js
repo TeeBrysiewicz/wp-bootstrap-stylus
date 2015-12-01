@@ -4,7 +4,6 @@ var url = 'styltheme.dev'; // Local dev URL. Change as needed.
 // Load plugins
 var gulp = require('gulp'),
 	stylus = require('gulp-stylus'),
-	jeet = require('jeet'), // stylus grid
 	autoprefixer = require('gulp-autoprefixer'),
 	minifyCss = require('gulp-minify-css'),
 	rename = require('gulp-rename'),
@@ -15,7 +14,7 @@ var gulp = require('gulp'),
 gulp.task('styles', function(){
 	 gulp.src('./styl/*.styl') // Two files get compiled here: main stylsheet (all partials imported) and editor stylesheet. Makes for simple gulpfile config, but maybe not best approach. Comments welcome! 
  	.pipe(stylus({
-       use: [jeet()],
+       use: [],
        sourcemap: { inline: true }
      }))
 	.pipe(autoprefixer({
@@ -30,7 +29,7 @@ gulp.task('styles', function(){
 	// .pipe(minifyCss())
 	// .pipe(gulp.dest('./'))
 });
-
+gulp.task('default', ['styles']);
 // Browser Sync
 gulp.task('browser-sync', function(){
 	browserSync({
@@ -42,3 +41,4 @@ gulp.task('browser-sync', function(){
 gulp.task('watch', ['browser-sync'], function(){
 	gulp.watch('./styl/**/*.styl', ['styles']);
 });
+
